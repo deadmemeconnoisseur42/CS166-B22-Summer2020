@@ -325,11 +325,19 @@ public class MechanicShop{
 	}
 	
 	public static void ListCustomersWithBillLessThan100(MechanicShop esql){//6
-		
+		try {
+			String cust_LT_100 = "SELECT date, comment, bill FROM Closed_Request WHERE bill < 100;";
+			esql.executeQueryAndPrintResult(cust_LT_100);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	public static void ListCustomersWithMoreThan20Cars(MechanicShop esql){//7
-		
+		try {
+			String more_than_20 =("SELECT fname, lname FROM Customer WHERE (SELECT COUNT(customer_id) FROM 
+		}	
 	}
 	
 	public static void ListCarsBefore1995With50000Milles(MechanicShop esql){//8
