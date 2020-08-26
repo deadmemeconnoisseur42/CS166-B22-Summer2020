@@ -326,7 +326,7 @@ public class MechanicShop{
 	
 	public static void ListCustomersWithBillLessThan100(MechanicShop esql){//6
 		try {
-			String cust_LT_100 = "SELECT date, comment, bill FROM Closed_Request WHERE bill < 100;";
+			String cust_LT_100 = "SELECT Closed_Request.date, Closed_Request.comment, Closed_Request.bill FROM Closed_Request WHERE Closed_Request.bill < 100;";
 			esql.executeQueryAndPrintResult(cust_LT_100);
 		}
 		catch (Exception e) {
@@ -336,8 +336,13 @@ public class MechanicShop{
 	
 	public static void ListCustomersWithMoreThan20Cars(MechanicShop esql){//7
 		try {
-			String more_than_20 =("SELECT fname, lname FROM Customer WHERE (SELECT COUNT(customer_id) FROM 
+			String more_than_20 = "SELECT c.fname, c.lname FROM (SELECT Owns.customer_id, COUNT(customer_id) as num FROM Customer, Owns, Car ";
+			more_than_20 += "WHERE Owns.customer_id = Customer.id AND Owns.car_vin = Car.vin GROUP BY customer_id) gt20, Customer c WHERE c.id = gt20.customer_id AND gt20.num > 20;";
+			esql.executeQueryAndPrintResult(more_than_20);
 		}	
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	public static void ListCarsBefore1995With50000Milles(MechanicShop esql){//8
