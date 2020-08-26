@@ -346,7 +346,15 @@ public class MechanicShop{
 	}
 	
 	public static void ListCarsBefore1995With50000Milles(MechanicShop esql){//8
-		
+		try {
+			String car_md_mk_yr = "SELECT c.make, c.model, c.year ";
+			car_md_mk_yr += "FROM Car c, Service_Request s ";
+			car_md_mk_yr += "WHERE c.year < 1995 AND c.vin = s.car_vin AND s.odometer < 50000;";
+			esql.executeQueryAndPrintResult(car_md_mk_yr);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}	
 	}
 	
 	public static void ListKCarsWithTheMostServices(MechanicShop esql){//9
