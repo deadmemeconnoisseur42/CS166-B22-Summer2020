@@ -399,20 +399,20 @@ public class MechanicShop{
         System.out.println("New Customers press 1\n Returning Customers press 2");
         String input = in.readLine();
         k = Integer.parseInt(input);
-/*      while(k != 1 || k != 2)
- *
- *              {
- *                              System.out.println("I am sorry that is the incorrect input.\nPlease press 1 if you are new or 2 if returning Thank You!");
- *                                              input = in.readLine();
- *                                                              k = Integer.parseInt(input);
- *                                                                      }
- *                                                                      */
+      while(k != 1 && k != 2)
+ 
+               {
+                               System.out.println("I am sorry that is the incorrect input.\nPlease press 1 if you are new or 2 if returning Thank You!");
+                                               input = in.readLine();
+                                                               k = Integer.parseInt(input);
+                                                                       }
+                                                                       
         if(k == 1)
         {
                 AddCustomer(esql);
                 AddCar(esql);
 
-                        String add_SR = "INSERT INTO Service_Request(rid, customer_id, car_vin, date, odometer, complaint)\nVALUES (";
+                        String add_SR = "INSERT INTO Service_Request(rid, customer_id, car_vin, date, odometer, complain)\nVALUES (";
                         System.out.print("\tEnter rid: ");
                         input = in.readLine();
                         add_SR += input + ", ";
@@ -427,7 +427,7 @@ public class MechanicShop{
 
                         System.out.print("\tEnter date: ");
                         input = in.readLine();
-                        add_SR += input + ", ";
+                        add_SR += "DATE '" + input + "', ";
 
                         System.out.print("\tEnter odometer reading: ");
                         input = in.readLine();
@@ -435,7 +435,7 @@ public class MechanicShop{
 
                         System.out.print("\tEnter complaint: ");
                         input = in.readLine();
-                        add_SR += input + ")";
+                        add_SR += "'" + input + "')";
 						 esql.executeUpdate(add_SR);
 
         }
@@ -459,7 +459,7 @@ public class MechanicShop{
 
 
 
-                        String add_SR = "INSERT INTO Service_Request(rid, customer_id, car_vin, date, odometer, complaint)\nVALUES (";
+                        String add_SR = "INSERT INTO Service_Request(rid, customer_id, car_vin, date, odometer, complain)\nVALUES (";
                         System.out.print("\tEnter rid: ");
                         input = in.readLine();
                         add_SR += input + ", ";
@@ -468,7 +468,7 @@ public class MechanicShop{
 
                         System.out.print("\tEnter date: ");
                         input = in.readLine();
-                        add_SR += input + ", ";
+                        add_SR += "DATE '" + input + "', ";
 
                         System.out.print("\tEnter odometer reading: ");
                         input = in.readLine();
@@ -496,13 +496,13 @@ public class MechanicShop{
 			String inpp;
 			System.out.print("Enter service request id: ");
 			String sssid = in.readLine();
-			String QueryChecker = "SELECT s.rid FROM Service_request s WHERE s.rid = " + sssid + "'";
+			String QueryChecker = "SELECT s.rid FROM Service_request s WHERE s.rid = " + sssid;
 			temp = esql.executeQuery(QueryChecker);
 			if(temp > 0)
 			{
 				System.out.print("Enter employee id: ");
 				String eeeid = in.readLine();
-				QueryChecker = "SELECT m.id FROM Mechanic m WHERE m.id = " + eeeid + "'";
+				QueryChecker = "SELECT m.id FROM Mechanic m WHERE m.id = " + eeeid;
 				temp = esql.executeQuery(QueryChecker);
 				if(temp > 0)
 				{
