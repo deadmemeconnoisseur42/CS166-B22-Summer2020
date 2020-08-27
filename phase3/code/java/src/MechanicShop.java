@@ -527,8 +527,17 @@ public class MechanicShop{
 		//
 		//Dummy function to test addition
 		try {
-			String testAdd = "SELECT * FROM Customer c WHERE c.fname = 'Bob';";
-			esql.executeQueryAndPrintResult(testAdd);
+			int k;
+			do {
+				System.out.println("Enter number of cars to look up. Please enter a number greater than 0: ");
+				String input = in.readLine();
+				k = Integer.parseInt(input);
+			} while (k <= 0);
+
+			String topK = "SELECT c.make, c.model, COUNT(s.rid) AS numServ ";
+			topK += "FROM Car c, Service_Request s WHERE c.vin = s.car_vin GROUP BY c.make, c.model ";
+			topK += "ORDER BY numServ Desc LIMIT 10;";
+			esql.executeQueryAndPrintResult(topK);
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
