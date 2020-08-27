@@ -359,7 +359,14 @@ public class MechanicShop{
 	
 	public static void ListKCarsWithTheMostServices(MechanicShop esql){//9
 		//
-		
+		//Dummy function to test addition
+		try {
+			String testAdd = "SELECT * FROM Customer c WHERE c.fname = 'Bob';";
+			esql.executeQueryAndPrintResult(testAdd);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	public static void ListCustomersInDescendingOrderOfTheirTotalBill(MechanicShop esql){//9
