@@ -328,7 +328,7 @@ public class MechanicShop{
 			input = in.readLine();
 			add_cust += "'" + input + "')";
 
-			esql.executeQueryAndPrintResult(add_cust);
+			esql.executeUpdate(add_cust);
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -356,7 +356,7 @@ public class MechanicShop{
 			input = in.readLine();
 			add_mechanic += input + ")";
 
-			esql.executeQueryAndPrintResult(add_mechanic);
+			esql.executeUpdate(add_mechanic);
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -384,7 +384,7 @@ public class MechanicShop{
 			input = in.readLine();
 			add_car += input + ")";
 
-			esql.executeQueryAndPrintResult(add_car);
+			esql.executeUpdate(add_car);
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -436,7 +436,7 @@ public class MechanicShop{
                         System.out.print("\tEnter complaint: ");
                         input = in.readLine();
                         add_SR += input + ")";
-						 esql.executeQueryAndPrintResult(add_SR);
+						 esql.executeUpdate(add_SR);
 
         }
         else
@@ -478,7 +478,7 @@ public class MechanicShop{
                         input = in.readLine();
                         add_SR += input + ")";
 
-                        esql.executeQueryAndPrintResult(add_SR);
+                        esql.executeUpdate(add_SR);
 						 }
         }
         catch (Exception e)
@@ -489,6 +489,57 @@ public class MechanicShop{
 	}
 	
 	public static void CloseServiceRequest(MechanicShop esql) throws Exception{//5
+
+	try
+		{
+			int temp;
+			String inpp;
+			System.out.print("Enter service request id: ");
+			String sssid = in.readLine();
+			String QueryChecker = "SELECT s.rid FROM Service_request s WHERE s.rid = " + sssid + "'";
+			temp = esql.executeQuery(QueryChecker);
+			if(temp > 0)
+			{
+				System.out.print("Enter employee id: ");
+				String eeeid = in.readLine();
+				QueryChecker = "SELECT m.id FROM Mechanic m WHERE m.id = " + eeeid + "'";
+				temp = esql.executeQuery(QueryChecker);
+				if(temp > 0)
+				{
+					QueryChecker = "INSERT INTO Closed_Request(wid, rid, mid, date, comment, bill)\nValues(";
+					System.out.println("Now Creating New closed record");
+					System.out.print("\tEnter wid: ");
+					inpp = in.readLine();
+					QueryChecker += inpp + ", " + sssid + ", " + eeeid + ", ";
+					System.out.print("\tEnter date: ");
+					inpp = in.readLine();
+					QueryChecker += inpp + ", ";
+					System.out.print("\tEnter comment: ");
+					inpp = in.readLine();
+					QueryChecker += inpp + ", ";
+					System.out.print("\tEnter Bill: ");
+					inpp = in.readLine();
+					QueryChecker += inpp + ")";
+
+					esql.executeUpdate(QueryChecker);
+
+				}
+				else
+				{
+					System.out.println("Sorry that employee id does not exist");
+				}
+			}
+			else
+			{
+				System.out.println("Sorry that service request id does not exist");
+			}
+
+
+		}
+		catch (Exception e)
+        {
+                System.out.println(e.getMessage());
+        }
 		
 	}
 	
