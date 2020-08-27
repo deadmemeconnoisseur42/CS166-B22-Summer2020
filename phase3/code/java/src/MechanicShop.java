@@ -364,7 +364,16 @@ public class MechanicShop{
 	
 	public static void ListCustomersInDescendingOrderOfTheirTotalBill(MechanicShop esql){//9
 		//
-		
+		try {
+			String highestBill = "SELECT c.fname, c.lname, SUM(closed.bill) as cbal ";
+			highestBill += "FROM Customer c, Closed_Request closed, Service_Request s ";
+			highestBill += "WHERE c.customer_id = s.customer_id AND s.rid = closed.rid ";
+			highestBill += "GROUP BY c.lname ORDER BY cbal Desc;";
+			esql.executeQueryAndPrintResult(highestBill);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 }
