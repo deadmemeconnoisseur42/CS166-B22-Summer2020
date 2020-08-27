@@ -393,97 +393,99 @@ public class MechanicShop{
 	}
 	
 	public static void InsertServiceRequest(MechanicShop esql){//4
-	try {
-	System.out.println("New Customers press 1\n Returning Customers press 2");
-	String input = in.readLine();
-/*	while(input != "1" || input != "2")
-	{
-		System.out.println("I am sorry that is the incorrect input.\nPlease press 1 if you are new or 2 if returning Thank You!");
-		input = in.readLine();
-	}
-	*/
-	if(input == "1")
-	{
-		AddCustomer(esql);
-		AddCar(esql);
 
-			String add_SR = "INSERT INTO Service_Request(rid, customer_id, car_vin, date, odometer, complaint)\nVALUES (";
-			System.out.print("\tEnter rid: ");
-			input = in.readLine();
-			add_SR += input + ", ";
+	 try {
+        int k;
+        System.out.println("New Customers press 1\n Returning Customers press 2");
+        String input = in.readLine();
+        k = Integer.parseInt(input);
+/*      while(k != 1 || k != 2)
+ *
+ *              {
+ *                              System.out.println("I am sorry that is the incorrect input.\nPlease press 1 if you are new or 2 if returning Thank You!");
+ *                                              input = in.readLine();
+ *                                                              k = Integer.parseInt(input);
+ *                                                                      }
+ *                                                                      */
+        if(k == 1)
+        {
+                AddCustomer(esql);
+                AddCar(esql);
 
-			System.out.print("\tEnter customer id: ");
-			input = in.readLine();
-			add_SR += input + ", ";
+                        String add_SR = "INSERT INTO Service_Request(rid, customer_id, car_vin, date, odometer, complaint)\nVALUES (";
+                        System.out.print("\tEnter rid: ");
+                        input = in.readLine();
+                        add_SR += input + ", ";
 
-			System.out.print("\tEnter car_vin: ");
-			input = in.readLine();
-			add_SR += input + ", ";
+                        System.out.print("\tEnter customer id: ");
+                        input = in.readLine();
+                        add_SR += input + ", ";
 
-			System.out.print("\tEnter date: ");
-			input = in.readLine();
-			add_SR += input + ", ";
+                        System.out.print("\tEnter car_vin: ");
+                        input = in.readLine();
+                        add_SR += input + ", ";
 
-			System.out.print("\tEnter odometer reading: ");
-			input = in.readLine();
-			add_SR += input + ", ";
+                        System.out.print("\tEnter date: ");
+                        input = in.readLine();
+                        add_SR += input + ", ";
 
-			System.out.print("\tEnter complaint: ");
-			input = in.readLine();
-			add_SR += input + ")";
+                        System.out.print("\tEnter odometer reading: ");
+                        input = in.readLine();
+                        add_SR += input + ", ";
 
-			esql.executeQueryAndPrintResult(add_SR);
+                        System.out.print("\tEnter complaint: ");
+                        input = in.readLine();
+                        add_SR += input + ")";
+						 esql.executeQueryAndPrintResult(add_SR);
 
-	}
-	else
-	{
-		System.out.print("Please enter your last name: ");
-		String LN = in.readLine();
+        }
+        else
+        {
+                System.out.print("Please enter your last name: ");
+                String LN = in.readLine();
 
-			String testAdd = "SELECT c.lname, c.fname, c.id FROM Customer c WHERE c.lname = '" + LN + "';";
-			esql.executeQueryAndPrintResult(testAdd);
+                        String testAdd = "SELECT c.lname, c.fname, c.id FROM Customer c WHERE c.lname = '" + LN + "';";
+                        esql.executeQueryAndPrintResult(testAdd);
 
-			System.out.print("Please enter id number associated with the customer: ");
-			String idd = in.readLine();
+                        System.out.print("Please enter id number associated with the customer: ");
+                        String idd = in.readLine();
 
-			String Cars_Found = "SELECT o.customer_id, o.car_vin FROM Owns WHERE o.customer_id = '" + idd + "';";
-			esql.executeQueryAndPrintResult(Cars_Found);
+                        String Cars_Found = "SELECT o.customer_id, o.car_vin FROM Owns o WHERE o.customer_id = '" + idd + "';";
+                        esql.executeQueryAndPrintResult(Cars_Found);
 
-			System.out.print("Please enter vin associated with the car that needs a service request: ");
-			String cvin = in.readLine();
-
-
+                        System.out.print("Please enter vin associated with the car that needs a service request: ");
+                        String cvin = in.readLine();
 
 
-			String add_SR = "INSERT INTO Service_Request(rid, customer_id, car_vin, date, odometer, complaint)\nVALUES (";
-			System.out.print("\tEnter rid: ");
-			input = in.readLine();
-			add_SR += input + ", ";
-			add_SR += idd + ", ";
-			add_SR += cvin + ", ";
 
-			System.out.print("\tEnter date: ");
-			input = in.readLine();
-			add_SR += input + ", ";
 
-			System.out.print("\tEnter odometer reading: ");
-			input = in.readLine();
-			add_SR += input + ", ";
+                        String add_SR = "INSERT INTO Service_Request(rid, customer_id, car_vin, date, odometer, complaint)\nVALUES (";
+                        System.out.print("\tEnter rid: ");
+                        input = in.readLine();
+                        add_SR += input + ", ";
+                        add_SR += idd + ", ";
+                        add_SR += cvin + ", ";
 
-			System.out.print("\tEnter complaint: ");
-			input = in.readLine();
-			add_SR += input + ")";
+                        System.out.print("\tEnter date: ");
+                        input = in.readLine();
+                        add_SR += input + ", ";
 
-			esql.executeQueryAndPrintResult(add_SR);
+                        System.out.print("\tEnter odometer reading: ");
+                        input = in.readLine();
+                        add_SR += input + ", ";
 
-	}
-	}
-	catch (Exception e)
-	{
-		System.out.println(e.getMessage());
-	}
+                        System.out.print("\tEnter complaint: ");
+                        input = in.readLine();
+                        add_SR += input + ")";
 
-		
+                        esql.executeQueryAndPrintResult(add_SR);
+						 }
+        }
+        catch (Exception e)
+        {
+                System.out.println(e.getMessage());
+        }
+
 	}
 	
 	public static void CloseServiceRequest(MechanicShop esql) throws Exception{//5
