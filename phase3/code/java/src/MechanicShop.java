@@ -314,11 +314,11 @@ public class MechanicShop{
 
 			System.out.print("\tEnter fname: ");
 			input = in.readLine();
-			add_cust += input + ", ";
+			add_cust += "'" + input + "', ";
 
 			System.out.print("\tEnter lname: ");
 			input = in.readLine();
-			add_cust += input + ", ";
+			add_cust += "'" + input + "', ";
 
 			System.out.print("\tEnter phone: ");
 			input = in.readLine();
@@ -326,7 +326,7 @@ public class MechanicShop{
 
 			System.out.print("\tEnter address: ");
 			input = in.readLine();
-			add_cust += input + ")";
+			add_cust += "'" + input + "')";
 
 			esql.executeQueryAndPrintResult(add_cust);
 		}
@@ -346,11 +346,11 @@ public class MechanicShop{
 
 			System.out.print("\tEnter fname: ");
 			input = in.readLine();
-			add_mechanic += input + ", ";
+			add_mechanic += "'" + input + "', ";
 
 			System.out.print("\tEnter lname: ");
 			input = in.readLine();
-			add_mechanic += input + ", ";
+			add_mechanic += "'" + input + "', ";
 
 			System.out.print("\tEnter experience: ");
 			input = in.readLine();
@@ -374,11 +374,11 @@ public class MechanicShop{
 
 			System.out.print("\tEnter make: ");
 			input = in.readLine();
-			add_car += input + ", ";
+			add_car += "'" + input + "', ";
 
 			System.out.print("\tEnter model: ");
 			input = in.readLine();
-			add_car += input + ", ";
+			add_car += "'" + input + "', ";
 
 			System.out.print("\tEnter year: ");
 			input = in.readLine();
