@@ -450,8 +450,8 @@ public class MechanicShop{
 		try {
 			String highestBill = "SELECT c.fname, c.lname, SUM(closed.bill) as cbal ";
 			highestBill += "FROM Customer c, Closed_Request closed, Service_Request s ";
-			highestBill += "WHERE c.customer_id = s.customer_id AND s.rid = closed.rid ";
-			highestBill += "GROUP BY c.lname ORDER BY cbal Desc;";
+			highestBill += "WHERE c.id = s.customer_id AND s.rid = closed.rid ";
+			highestBill += "GROUP BY c.fname, c.lname ORDER BY cbal Desc;";
 			esql.executeQueryAndPrintResult(highestBill);
 		}
 		catch (Exception e) {
