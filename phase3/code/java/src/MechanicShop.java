@@ -305,14 +305,90 @@ public class MechanicShop{
 	}//end readChoice
 	
 	public static void AddCustomer(MechanicShop esql){//1
+
+	try {
+			String add_cust = "INSERT INTO Customer(id, fname, lname, phone, address)\nVALUES (";
+			System.out.print("\tEnter id: ");
+			String input = in.readLine();
+			add_cust += input + ", ";
+
+			System.out.print("\tEnter fname: ");
+			input = in.readLine();
+			add_cust += input + ", ";
+
+			System.out.print("\tEnter lname: ");
+			input = in.readLine();
+			add_cust += input + ", ";
+
+			System.out.print("\tEnter phone: ");
+			input = in.readLine();
+			add_cust += input + ", ";
+
+			System.out.print("\tEnter address: ");
+			input = in.readLine();
+			add_cust += input + ")";
+
+			esql.executeQueryAndPrintResult(add_cust);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		
 	}
 	
 	public static void AddMechanic(MechanicShop esql){//2
+
+	try {
+			String add_mechanic = "INSERT INTO Mechanic(id, fname, lname, experience)\nVALUES (";
+			System.out.print("\tEnter id: ");
+			String input = in.readLine();
+			add_mechanic += input + ", ";
+
+			System.out.print("\tEnter fname: ");
+			input = in.readLine();
+			add_mechanic += input + ", ";
+
+			System.out.print("\tEnter lname: ");
+			input = in.readLine();
+			add_mechanic += input + ", ";
+
+			System.out.print("\tEnter experience: ");
+			input = in.readLine();
+			add_mechanic += input + ")";
+
+			esql.executeQueryAndPrintResult(add_mechanic);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		
 	}
 	
 	public static void AddCar(MechanicShop esql){//3
+
+	try {
+			String add_car = "INSERT INTO Car(vin, make, model, year)\nVALUES (";
+			System.out.print("\tEnter vin: ");
+			String input = in.readLine();
+			add_car += input + ", ";
+
+			System.out.print("\tEnter make: ");
+			input = in.readLine();
+			add_car += input + ", ";
+
+			System.out.print("\tEnter model: ");
+			input = in.readLine();
+			add_car += input + ", ";
+
+			System.out.print("\tEnter year: ");
+			input = in.readLine();
+			add_car += input + ")";
+
+			esql.executeQueryAndPrintResult(add_car);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		
 	}
 	
